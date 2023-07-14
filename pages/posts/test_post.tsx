@@ -10,6 +10,7 @@ export default function Ftest_post() {
                 test memo
             </title>
         </Head>
+<body>
             <h1>                 
                 <Link href="/">
                     Home
@@ -24,6 +25,7 @@ export default function Ftest_post() {
                     <li>glass</li>
                     <li>wood</li>
                 </ol>
+</body>
         </>
     )
 }
