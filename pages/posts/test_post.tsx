@@ -20,7 +20,7 @@ export default function Ftest_post() {
             <h2>
 
             </h2>
-                <ol type="1">
+                <ol>
                     <li>can</li>
                     <li>glass</li>
                     <li>wood</li>
