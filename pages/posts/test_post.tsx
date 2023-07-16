@@ -10,6 +10,28 @@ export default function Ftest_post() {
                 test memo
             </title>
         </Head>
+<style> 			
+div { 			
+	width: 100px; 			
+	height: 100px; 			
+	position: absolute; 		
+	} 		
+	div.x { 				
+background-color: #2196F3; 				
+top: 20px; 			
+	left: 200px; 			
+} 		
+	div.y { 			
+	background-color: #1976D2; 				
+top: 50px; 			
+	left: 260px; 			
+} 			
+div.z { 			
+	background-color: #0D47A1; 				
+top: 80px; 				
+left: 230px; 			
+} 	
+	</style>
 <body>
             <h1>                 
                 <Link href="/">
@@ -25,6 +47,9 @@ export default function Ftest_post() {
                     <li>glass</li>
                     <li>wood</li>
                 </ol>
+<div class="x"></div> 		
+<div class="y"></div> 	
+	<div class="z"></div>
 </body>
         </>
     )
