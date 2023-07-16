@@ -9,7 +9,7 @@ export default function Ftest_post() {
             <title>
                 test memo
             </title>
-            <style> 			
+            /*<style> 			
                 div { 			
    	             width: 100px; 			
 	                height: 100px; 			
@@ -30,7 +30,7 @@ export default function Ftest_post() {
                 top: 80px; 				
                 left: 230px; 			
                 } 	
-            </style>
+            </style>*/
         </Head>
         <body>
             <h1>                 
@@ -47,9 +47,9 @@ export default function Ftest_post() {
                     <li>glass</li>
                     <li>wood</li>
                 </ol>
-            <div class="x"></div> 		
+            /*<div class="x"></div> 		
             <div class="y"></div> 	
-            	<div class="z"></div>
+            	<div class="z"></div>*/
         </body>
         </>
     )
