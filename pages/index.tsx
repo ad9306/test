@@ -43,6 +43,11 @@ export default function Home() {
             </p>
             여기 밑에 또 쓰면?
           </h1>
+          <h2>
+            <Link href="/posts/test_post2">
+              <button>go button</button>
+            </Link>
+          </h2>
           
 
       </>
