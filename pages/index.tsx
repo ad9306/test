@@ -27,7 +27,9 @@ export default function Home() {
 
   const Number = count.toString()
 
-
+  const FontColor = {
+    color: "black"
+  }
 
   return (
     <>
@@ -39,13 +41,13 @@ export default function Home() {
 
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30vh' }}>
 
-          <h1 className={styles.title}>
+          <h1 style={FontColor}>
 
             Slow and steady wins the race.
 
           </h1>
 
-          <h2>
+          <h2 style={FontColor} >
             <Link href="/posts/test_post">
               click this!
               <Image
@@ -57,7 +59,7 @@ export default function Home() {
             </Link>
           </h2>
         </div>
-        <h1>
+        <h1 style={FontColor} >
           이렇게 하면<br></br> 어떻게 될까?
           문단분리 안하면 그냥 쓰이는거고?
           <p>
@@ -84,15 +86,15 @@ export default function Home() {
         <div>
           {Number}
           {
-          Number === "7" 
-          ? <p>아주 좋아요!</p>
-          : (Number === "19"
-            ? <p> 조금만 더!</p>
-            : <p> ??? </p>
-          )
-        }
+            Number === "7"
+              ? <p>아주 좋아요!</p>
+              : (Number === "19"
+                ? <p> 조금만 더!</p>
+                : <p> ??? </p>
+              )
+          }
           {
-          Number === "20" && <Link href="/posts/test_post2"><button>드디어</button></Link>
+            Number === "20" && <Link href="/posts/test_post2"><button>드디어</button></Link>
           }
         </div>
 
