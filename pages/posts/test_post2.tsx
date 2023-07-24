@@ -6,7 +6,7 @@ export default function test_post2() {
     return (
         <>
             <div>
-                최악이다!!!!
+                아직 아무것도 없다.
             </div>
         </>
     )

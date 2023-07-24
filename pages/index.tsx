@@ -24,6 +24,7 @@ export default function Home() {
     setCount(count - 1);
   };
 
+
   const Number = count.toString()
 
 
@@ -82,6 +83,17 @@ export default function Home() {
         </div>
         <div>
           {Number}
+          {
+          Number === "7" 
+          ? <p>아주 좋아요!</p>
+          : (Number === "19"
+            ? <p> 조금만 더!</p>
+            : <p> ??? </p>
+          )
+        }
+          {
+          Number === "20" && <Link href="/posts/test_post2"><button>드디어</button></Link>
+          }
         </div>
 
 
