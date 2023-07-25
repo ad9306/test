@@ -24,12 +24,13 @@ export default function Home() {
     setCount(count - 1);
   };
 
-
   const Number = count.toString()
 
   const FontColor = {
     color: "black"
   }
+
+
 
   return (
     <>
@@ -83,7 +84,7 @@ export default function Home() {
             onClick={onClicks}
           >- 1 button</button>
         </div>
-        <div>
+        <div style ={FontColor}>
           {Number}
           {
             Number === "7"
