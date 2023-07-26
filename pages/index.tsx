@@ -98,7 +98,10 @@ export default function Home() {
             Number === "20" && <Link href="/posts/test_post2"><button>드디어</button></Link>
           }
         </div>
-
+        <div>
+        <button onClick={alert(() => '확인?')}>
+        arrow</button>
+        </div>
 
 
       </>
