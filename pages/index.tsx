@@ -100,7 +100,7 @@ export default function Home() {
             Number === "20" && <Link href="/posts/test_post2"><button>드디어</button></Link>
           }
           {
-            Number === "-7" ? clickAlert
+            Number === "-7" ? clickAlert : undefined
           }
         </div>
         <div>
