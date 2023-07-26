@@ -30,7 +30,9 @@ export default function Home() {
     color: "black"
   }
 
-
+  const clickAlert = () => {
+     alert("진짜?");
+  }
 
   return (
     <>
@@ -99,7 +101,7 @@ export default function Home() {
           }
         </div>
         <div>
-        <button onClick={alert(() => '확인?')}>
+        <button onClick={clickAlert}>
         arrow</button>
         </div>
 
