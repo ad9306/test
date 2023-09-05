@@ -23,29 +23,54 @@
 "use client"
 
 import { useState } from "react"
+import AddTask from "./addtask";
+import { useRouter } from "next/navigation";
 
 
 export default function TodoList() {
 
 
-  const [confirm, setConfirm] = useState(false)
+  //db
+  const [todoArray, setTodoArray] = useState([
+    { id: 0, name: '', completed: false },
+
+  ])
+
+  const [name, setName] = useState('')
 
 
-  console.log(confirm);
 
 
+  const addbtn = () => {
+    setTodoArray([...todoArray, { id: Math.random(), name: name, completed: false }])
+  }
 
-  const todos = [
-    { id: 1, name: 'Buy Milk', completed: false },
-    { id: 2, name: 'Buy Eggs', completed: false },
-    { id: 3, name: 'Buy Bread', completed: false },
-    { id: 3, name: 'Buy Bread', completed: false },
-    { id: 3, name: 'Buy Bread', completed: false },
 
-  ]
+  const deletebtn = (id: number) => {
+    setTodoArray(todoArray.filter((todo) => todo.id !== id))
+  }
+
 
   return (
     <div className="overflow-x-auto">
+
+      <AddTask />
+
+      <button className="pr-2" onClick={() => {
+        addbtn()
+        setName('')
+
+      }}>add</button>
+
+      <input
+        value={name}
+        type="text" onChange={(e) => {
+          setName(e.target.value)
+        }
+        } />
+
+
+
       <table className="table">
         {/* head */}
         <thead>
@@ -56,12 +81,17 @@ export default function TodoList() {
         </thead>
 
         <tbody>
-          {todos.map((todo) => (
+          {todoArray.map((todo) => (
             <tr
 
               key={todo.id}>
               <td>{todo.name}</td>
               <td>{todo.completed}</td>
+              <td>
+                <button onClick={() => {
+                  deletebtn(todo.id)
+                }}>delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
