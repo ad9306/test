@@ -36,9 +36,9 @@ export default function TodoList() {
 
   ])
 
+  const todoarrayJson = JSON.stringify(todoArray)
+
   const [name, setName] = useState('')
-
-
 
 
   const addbtn = () => {
@@ -97,6 +97,8 @@ export default function TodoList() {
         </tbody>
 
       </table>
+      가짜 DB 보기
+      {todoarrayJson == "[]" ? <div>no data</div> : <div>{todoarrayJson}</div>}
     </div>
   )
 
