@@ -50,6 +50,9 @@ export default function TodoList() {
     setTodoArray(todoArray.filter((todo) => todo.id !== id))
   }
 
+  const setCompleted = (id: number) => {
+    setTodoArray(todoArray.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+  }
 
   return (
     <div className="overflow-x-auto">
@@ -86,19 +89,30 @@ export default function TodoList() {
 
               key={todo.id}>
               <td>{todo.name}</td>
-              <td>{todo.completed}</td>
+              <td>{todo.completed ? "O" : "X"}</td>
               <td>
                 <button onClick={() => {
                   deletebtn(todo.id)
                 }}>delete</button>
+              </td>
+              <td>
+                <button onClick={() => {
+                  setCompleted(todo.id)
+                }}>
+
+                  {todo.completed ? "완료됐어요" : "완료하기"}
+
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
 
       </table>
+
       가짜 DB 보기
       {todoarrayJson == "[]" ? <div>no data</div> : <div>{todoarrayJson}</div>}
+
     </div>
   )
 
