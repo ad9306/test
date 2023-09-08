@@ -32,16 +32,23 @@ export default function TodoList() {
     setTodoArray(todoArray.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo))
   }
 
+  const [check, setCheck] = useState(0)
+
+  const updateCheck = () => {
+    setCheck(check + 1);
+  }
+
   return (
     <div className="overflow-x-auto">
 
       <AddTask />
-
+      addtask안으로 내용 옮기기
       <button className="pr-2" onClick={() => {
         addbtn()
         setName('')
 
       }}>add</button>
+
 
       <input
         value={name}
@@ -50,9 +57,15 @@ export default function TodoList() {
         }
         } />
 
+      <button className="checkbtn" onClick={() => {
+        updateCheck()
+      }}>check</button>
 
+      완료개수
+      {check}
 
       <table className="table">
+        table 번호 업로드시간 완료시간 내용 지우기 완료하기
         {/* head */}
         <thead>
           <tr>

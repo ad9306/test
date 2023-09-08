@@ -10,7 +10,9 @@ export default function Home() {
           <h1 className='text-2xl font-bold'>Todo App</h1>
         </div>
       </main>
+      체크박스로 변환하기
       <TodoList />
+      완료개수 옮기기
     </>
   )
 }
