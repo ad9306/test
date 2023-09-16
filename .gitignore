@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#postgre_env
+.env.development.local
+
 # testing
 /coverage
 
