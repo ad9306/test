@@ -3,9 +3,13 @@
 import { useState } from "react"
 import AddTask from "./addtask";
 import { useRouter } from "next/navigation";
+import { PrismaClient, Prisma } from '@prisma/client'
 
+const prisma = new PrismaClient()
 
 export default function TodoList() {
+
+  
 
 
   //db
