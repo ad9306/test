@@ -19,7 +19,7 @@ model User {
 }
 
 model todo {
-  id        Int       @id
-  name      String
+  id        Int       @id @default(autoincrement())
+  description      String
   completed Boolean
 }
