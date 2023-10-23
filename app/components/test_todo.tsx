@@ -2,7 +2,7 @@
 // async function TEST(data =  {
 
 //   try {
-//       fetch("/api/post", {
+//       fetch("/api/gettodo", {
 //           body: JSON.stringify(data),
 //           headers: {
 //               "Content-Type": "application/json",
