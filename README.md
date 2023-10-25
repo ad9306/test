@@ -45,4 +45,24 @@ page db data - list - front rand
 
 db ex. id/des/bool  -> dummy data
 
+fetch ex. code
+// async function TEST(data = fetchdatas)  {
 
+//   try {
+//       fetch("/api/gettodo", {
+//           body: JSON.stringify(data),
+//           headers: {
+//               "Content-Type": "application/json",
+//           },
+//           method: "POST",
+//       })
+//           .then((response) => response.status === 404 ? alert("서버에러") : response.json())
+
+//           // .then((response) => response.json())
+
+//           .then((result) => alert(result))
+//   } catch (error) {
+//       throw (alert("서버에러"));
+//   }
+
+// }

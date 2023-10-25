@@ -1,21 +1,13 @@
 
-// async function TEST(data =  {
+async function getTest(data: any)  {
 
-//   try {
-//       fetch("/api/gettodo", {
-//           body: JSON.stringify(data),
-//           headers: {
-//               "Content-Type": "application/json",
-//           },
-//           method: "POST",
-//       })
-//           .then((response) => response.status === 404 ? alert("서버에러") : response.json())
+  try {
+      fetch("/api/gettodo", {method: "GET"})
+        .then((response) => response.json())
 
-//           // .then((response) => response.json())
+        .then((result) => alert(result))
+  } catch (error) {
+      throw (alert("서버에러"));
+  }
 
-//           .then((result) => alert(result))
-//   } catch (error) {
-//       throw (alert("서버에러"));
-//   }
-
-// }
+}

@@ -3,12 +3,23 @@
 import { useState } from "react"
 import AddTask from "./addtask";
 import { useRouter } from "next/navigation";
-import { PrismaClient, Prisma } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { prisma } from "@/lib/prisma";
 
 export default function TodoList() {
 
+
+  async function getTest()  {
+
+    try {
+        fetch("/api/gettodo", {method: "GET"})
+          .then((response) => response.json())
+  
+          .then((result) => alert(result))
+    } catch (error) {
+        throw (alert("서버에러"));
+    }
+  
+  }
   
 
 
@@ -67,7 +78,8 @@ export default function TodoList() {
 
       완료개수
       {check}
-
+      
+      <button className="ondata" onClick={getTest}>내용불러오기</button>
       <table className="table">
         table 번호 업로드시간 완료시간 내용 지우기 완료하기
         {/* head */}
