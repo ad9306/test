@@ -8,19 +8,20 @@ import { prisma } from "@/lib/prisma";
 export default function TodoList() {
 
 
-  async function getTest()  {
+  async function getTest() {
 
     try {
-        fetch("/api/gettodo", {method: "GET"})
-          .then((response) => response.json())
-  
-          .then((result) => alert(result))
+      fetch("/api/gettodo", { method: "GET" })
+        .then((response) => response.json())
+        .then((result) =>
+          alert(result.error))
+
     } catch (error) {
-        throw (alert("서버에러"));
+      throw (alert("서버에러"));
     }
-  
+
   }
-  
+
 
 
   //db
@@ -78,8 +79,10 @@ export default function TodoList() {
 
       완료개수
       {check}
-      
-      <button className="ondata" onClick={getTest}>내용불러오기</button>
+
+      <button className="ondata p-2 border rounded-md mt-2" onClick={() => {
+        getTest()
+      }}>내용불러오기</button>
       <table className="table">
         table 번호 업로드시간 완료시간 내용 지우기 완료하기
         {/* head */}
