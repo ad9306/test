@@ -6,13 +6,7 @@ export async function GET(request: Request) {
 
     try {
 
-        const data = await request.json();
-
-        console.log(data);
-
-        // 여기부터 프리즈마 코드 시작
-
-        await prisma.todo.findMany()
+        const data = await prisma.todo.findMany();
 
         return Response.json(data)
     }
