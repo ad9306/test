@@ -1,5 +1,7 @@
-import TodoList from './components/TodoList'
+import Todolist from './components/calltodolist'
 import AddTask from './components/addtask'
+import TestList from './components/test_todo'
+
 
 export default function Home() {
   return (
@@ -10,9 +12,8 @@ export default function Home() {
           <h1 className='text-2xl font-bold'>Todo App</h1>
         </div>
       </main>
-      체크박스로 변환하기
-      <TodoList />
-      완료개수 옮기기
+
+      <TestList />
     </>
   )
 }

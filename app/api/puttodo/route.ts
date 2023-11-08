@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
         const data = await request.json();
 
-        console.log(data.airline);
+        console.log(data);
 
         // 여기부터 프리즈마 코드 시작
 
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         //     }
         // })
 
-        return Response.json(data.airline)
+        return Response.json(data)
     }
     catch (error) {
         console.log(error);

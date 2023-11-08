@@ -66,3 +66,82 @@ fetch ex. code
 //   }
 
 // }
+
+
+-----
+
+  const getData = async () => {
+
+        setIsloading(true)
+
+
+        try {
+            const res = await FindContainer({
+                no: containerNumber,
+            });
+
+            if (res.arrres?.length === 0 && res.depres?.length === 0) {
+                alert("컨테이너가 정보가 없습니다.");
+                setIsloading(false)
+                return
+            }
+            setData(res);
+            setIsloading(false)
+
+        }
+
+
+        catch (error) {
+            console.log(error);
+            return (
+                alert("서버에러")
+            )
+        }
+
+    };
+
+
+
+----
+
+"use server"
+import { prisma } from '@/lib/prisma'
+
+export async function FindContainer(props: any) {
+
+    const { no } = props;
+
+
+    try {
+        const arrres = await prisma.arrulddata.findMany({
+            where: {
+                no: {
+                    contains: no
+                }
+            },
+            include: {
+                arrulddmgpic: true,
+            }
+        })
+
+        const depres = await prisma.container.findMany({
+            where: {
+                no: {
+                    contains: no
+                }
+            }
+        })
+
+        return {
+            arrres,
+            depres,
+        }
+
+    } catch (error) {
+
+        console.log(error);
+
+        return { error };
+    }
+}
+

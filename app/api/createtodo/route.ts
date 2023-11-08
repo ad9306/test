@@ -10,12 +10,9 @@ export async function POST(request: Request) {
 
         console.log(data.airline);
 
-        // 여기부터 프리즈마 코드 시작
 
-        // await prisma.todolist.create({
+        // await prisma.todo.create({
         //     data: {
-
-        //         text: data
 
         //     }
         // })

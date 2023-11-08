@@ -20,5 +20,5 @@ model User {
 model todo {
   id        Int       @id @default(autoincrement())
   description      String
-  completed Boolean
+  completed Boolean   @default(false)
 }
