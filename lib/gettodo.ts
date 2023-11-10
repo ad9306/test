@@ -9,8 +9,10 @@ export async function FindTodo(/*props: any*/) {
 
     try {
         const finddata = await prisma.todo.findMany()
+
         console.log(finddata);
-        return { finddata }
+
+        return finddata 
 
     } catch (error) {
 
