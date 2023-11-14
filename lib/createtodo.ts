@@ -4,13 +4,11 @@ import { prisma } from '@/lib/prisma'
 
 export async function CreateTodo(props: any) {
 
-    const { des } = props;
-
 
     try {
         const plusdata = await prisma.todo.create({
             data: {
-                description: 'des',
+                description: props,
                 completed: false,
             }
                 

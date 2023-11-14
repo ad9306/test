@@ -1,24 +1,34 @@
 "use client"
 
-import { useState } from "react";
-import { FindTodo } from "@/lib/gettodo";
+import { useState,useTransition } from "react";
+import { getTodo,delLine } from "@/lib/gettodo";
 import { CreateTodo } from "@/lib/createtodo";
+import {useRouter} from "next/navigation"
 
 
-export default function TestList() {
+export default function TestList(props:any) {
+
+  const router = useRouter()
 
 
+  const listdata = props.data
+
+  const [ispending,setTransition] = useTransition()
+  const [ispending2,setTransition2] = useTransition()
 
 
   const [Ldata, setLdata] = useState([] as any)
 
-  const [Name, setName] = useState('')
 
-  //내용불러오기
+  const [name, setName] = useState('')
+
+  const refTodo = router.refresh
+
+  //내용불러오기 -> 자동이기 때문에 필요없어짐
   const getData = async () => {
 
     try {
-        const res = await FindTodo();
+        const res = await getTodo();
         setLdata(res)
     }
 
@@ -32,13 +42,14 @@ export default function TestList() {
 };
 
 //내용추가하기
-const plusData = async () => {
+const plusData = (name:any) => {
 
   try {
-      const res = await CreateTodo({
-        des: Name,
-  });
-      setLdata(res)
+    setTransition2(()=>{
+      CreateTodo(name)
+    })
+      
+    
   }
 
   catch (error) {
@@ -47,28 +58,61 @@ const plusData = async () => {
           alert("서버에러")
       )
   }
+  finally{
+    setName("")
+    router.refresh()
+  }
 
 };
+
+//내용지우기
+async function deleteLine(id:any){
+  setTransition(()=>{
+    delLine(id);
+    //  window.location.reload()
+    router.refresh()
+
+  })
+
+}
+
+
 
   return (
     <div>
 
   <div className="w-full">
   <button className="ondata p-2 border rounded-md mt-2 w-full" onClick={() => {
-        getData()
-      }}>내용불러오기</button>
+        refTodo
+      }}>새로고침</button>
   </div>
   <div className="w-1/3">
   <button className="ondata p-2 border rounded-md mt-2 w-full" onClick={() => {
-        plusData()
-        setName('')
+        plusData(name)
       }}>내용추가하기</button>
   </div>
   <input
-    value={Name}
+    value={name}
     type="text" onChange={(e) => {
       setName(e.target.value)
     }} />
+
+    <div id="지우는상태"
+    className={
+      ispending ? "" : "hidden"
+    }
+    >
+    
+지우는중...
+    </div>
+    <div id="지우는상태"
+    className={
+      ispending2 ? "" : "hidden"
+    }
+    >
+    
+추가하는중...
+    </div>
 
 <div className="mt-2">
   <thead className="grid grid-cols-4 gap-3 py-2">
@@ -78,7 +122,7 @@ const plusData = async () => {
           <tr>button</tr>
   </thead>
 {
-  Ldata?.map((keys:any)=>(
+listdata?.map((keys:any)=>(
     <div key={keys.id}>
       <div className="grid grid-cols-4 gap-3 py-2"> 
 
@@ -95,8 +139,11 @@ const plusData = async () => {
       </div>
       <div>
        <button className="p-2 border rounded-md mt-2 w-full"
+       onClick={()=>{
+        deleteLine(keys.id)
+       }}
        >
-        버튼
+        Del
        </button>
       </div>
 

@@ -1,9 +1,13 @@
 import Todolist from './components/calltodolist'
 import AddTask from './components/addtask'
 import TestList from './components/test_todo'
+import { getTodo } from '@/lib/gettodo'
 
 
-export default function Home() {
+export default async function Home() {
+
+const resdata = await getTodo()
+
   return (
     <>
       <main className='max-w-4xl mx-auto mt-4'>
@@ -13,7 +17,9 @@ export default function Home() {
         </div>
       </main>
 
-      <TestList />
+      <TestList data={resdata} />
     </>
   )
 }
+
+export const revalidate = 0
