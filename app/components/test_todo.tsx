@@ -2,7 +2,7 @@
 
 import { useState,useTransition } from "react";
 import { getTodo,delLine } from "@/lib/gettodo";
-import { CreateTodo } from "@/lib/createtodo";
+import { createTodo, updateComp } from "@/lib/createtodo";
 import {useRouter} from "next/navigation"
 
 
@@ -13,17 +13,16 @@ export default function TestList(props:any) {
 
   const listdata = props.data
 
-  const [ispending,setTransition] = useTransition()
-  const [ispending2,setTransition2] = useTransition()
-
+  const [ispending,setTransition] = useTransition() //지우기
+  const [ispending2,setTransition2] = useTransition() //추가하기
+  const [ispending3,setTransition3] = useTransition() //완료값 변경
 
   const [Ldata, setLdata] = useState([] as any)
 
 
   const [name, setName] = useState('')
 
-  const refTodo = router.refresh
-
+/*
   //내용불러오기 -> 자동이기 때문에 필요없어짐
   const getData = async () => {
 
@@ -40,13 +39,14 @@ export default function TestList(props:any) {
     }
 
 };
+*/
 
 //내용추가하기
 const plusData = (name:any) => {
 
   try {
     setTransition2(()=>{
-      CreateTodo(name)
+      createTodo(name)
     })
       
     
@@ -76,6 +76,16 @@ async function deleteLine(id:any){
 
 }
 
+//완료 상태 변화
+const changeCompleted = (iddata: number, completeddata: boolean) => {
+  setTransition3(()=>{
+    const updatacompleted = completeddata ? false : true
+    
+    updateComp(iddata, updatacompleted)
+    router.refresh()
+  })
+
+}
 
 
   return (
@@ -83,7 +93,8 @@ async function deleteLine(id:any){
 
   <div className="w-full">
   <button className="ondata p-2 border rounded-md mt-2 w-full" onClick={() => {
-        refTodo
+        location.replace(location.href);
+
       }}>새로고침</button>
   </div>
   <div className="w-1/3">
@@ -113,6 +124,14 @@ async function deleteLine(id:any){
     
 추가하는중...
     </div>
+    <div id="상태변경"
+    className={
+      ispending3 ? "" : "hidden"
+    }
+    >
+    
+상태변경중...
+    </div>
 
 <div className="mt-2">
   <thead className="grid grid-cols-4 gap-3 py-2">
@@ -135,7 +154,12 @@ listdata?.map((keys:any)=>(
       </div>
 
       <div>
+        <button className="p-2 border rounded-md mt-2 w-full"
+        onClick={()=>{
+          changeCompleted(keys.id, keys.completed)
+        }}>
         {keys.completed ? "완료" : "안됨" }
+        </button>
       </div>
       <div>
        <button className="p-2 border rounded-md mt-2 w-full"

@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma'
 
-export async function CreateTodo(props: any) {
+export async function createTodo(props: any) {
 
 
     try {
@@ -21,5 +21,23 @@ export async function CreateTodo(props: any) {
         console.log(error);
 
         return { error };
+    }
+}
+// id를 받아와서 누르면 true fales가 변환되게 하기.
+export async function updateComp(iddata: number, completeddata: boolean) {
+    
+    try{
+        await prisma.todo.update({
+            where :{
+                id: iddata
+            },
+                data :{
+                    completed: completeddata
+                    }
+        })
+    } catch(error) {
+        console.log(error);
+
+        return {error}
     }
 }
