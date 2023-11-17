@@ -98,15 +98,16 @@ const changeCompleted = (iddata: number, completeddata: boolean) => {
       }}>새로고침</button>
   </div>
   <div className="w-1/3">
-  <button className="ondata p-2 border rounded-md mt-2 w-full" onClick={() => {
+    <button className="ondata p-2 border rounded-md mt-2 w-full" onClick={() => {
         plusData(name)
       }}>내용추가하기</button>
-  </div>
-  <input
+    <input
     value={name}
     type="text" onChange={(e) => {
       setName(e.target.value)
     }} />
+  </div>
+
 
     <div id="지우는상태"
     className={
