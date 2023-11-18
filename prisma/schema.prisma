@@ -22,3 +22,8 @@ model todo {
   description      String
   completed Boolean   @default(false)
 }
+
+model pets{
+  name      String    @unique
+  owner     String
+}
