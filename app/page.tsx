@@ -1,5 +1,3 @@
-import Todolist from './components/calltodolist'
-import AddTask from './components/addtask'
 import TestList from './components/test_todo'
 import { getTodo } from '@/lib/gettodo'
 
@@ -23,3 +21,5 @@ const resdata = await getTodo()
 }
 
 export const revalidate = 0
+
+
