@@ -4,6 +4,7 @@ import { useState,useTransition } from "react";
 import { delLine } from "@/lib/gettodo";
 import { createTodo, updateComp } from "@/lib/createtodo";
 import {useRouter} from "next/navigation"
+import { DayDate } from "@/lib/date";
 
 
 export default function TestList(props:any) {
@@ -68,7 +69,7 @@ const changeCompleted = (iddata: number, completeddata: boolean) => {
 
   return (
 <div>
-
+   <div></div> 
   <div className="w-full">
     <button className="p-2 border rounded-md mt-2 w-full" onClick={() => {
         location.replace(location.href);

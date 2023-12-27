@@ -1,6 +1,6 @@
 import TestList from './components/test_todo'
 import { getTodo } from '@/lib/gettodo'
-
+import CalendarPart from './components/calendar'
 
 export default async function Home() {
 
@@ -14,8 +14,8 @@ const resdata = await getTodo()
           <h1 className='text-2xl font-bold'>Todo App</h1>
         </div>
       </main>
-
       <TestList data={resdata} />
+
     </>
   )
 }
