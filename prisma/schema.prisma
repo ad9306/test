@@ -19,6 +19,7 @@ model User {
 
 model todo {
   id        Int       @id @default(autoincrement())
+  date      String
   description      String
   completed Boolean   @default(false)
 }

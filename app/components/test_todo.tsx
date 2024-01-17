@@ -4,7 +4,7 @@ import { useState,useTransition } from "react";
 import { delLine } from "@/lib/gettodo";
 import { createTodo, updateComp } from "@/lib/createtodo";
 import {useRouter} from "next/navigation"
-import { DayDate } from "@/lib/date";
+import * as date from "@/lib/date";
 
 
 export default function TestList(props:any) {
@@ -76,6 +76,8 @@ const changeCompleted = (iddata: number, completeddata: boolean) => {
 
     }}>Refresh</button>
   </div>
+  testarea
+  <button>{date.today()}</button>
   <div>
     <button className="p-2 border rounded-md mt-2 w-1/3" onClick={() => {
         plusData(name)
@@ -109,7 +111,7 @@ const changeCompleted = (iddata: number, completeddata: boolean) => {
 
 <div className="mt-2">
   <div className="grid grid-cols-4 gap-3 py-2">
-        <div>id</div>
+        <div>date</div>
         <div>description</div>
         <div>completed</div>
         <div>button</div>
@@ -120,7 +122,7 @@ const changeCompleted = (iddata: number, completeddata: boolean) => {
           <div className="grid grid-cols-4 gap-3 py-2"> 
 
           <div>
-            {keys.id} 
+            {keys.date} 
           </div>
 
           <div>

@@ -1,6 +1,7 @@
 "use server"
 
 import { prisma } from '@/lib/prisma'
+import * as date from './date'
 
 export async function createTodo(props: any) {
 
@@ -8,6 +9,7 @@ export async function createTodo(props: any) {
     try {
         const plusdata = await prisma.todo.create({
             data: {
+                date: date.today(),
                 description: props,
                 completed: false,
             }
